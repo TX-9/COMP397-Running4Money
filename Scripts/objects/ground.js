@@ -60,7 +60,6 @@ var objects;
         Ground.prototype.start = function () {
             this._reset();
             this._dx = 3; // 5px per frame down
-            console.log("start()");
         };
         /**
          * This method updates the object's properties
@@ -72,7 +71,6 @@ var objects;
          */
         Ground.prototype.update = function () {
             this.x -= this._dx;
-            console.log(this.x + ":" + this._dx);
             this._checkBounds();
         };
         return Ground;

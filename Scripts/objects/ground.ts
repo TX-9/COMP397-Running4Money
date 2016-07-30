@@ -61,7 +61,7 @@ module objects {
         public start():void {
             this._reset();
             this._dx = 3; // 5px per frame down
-            console.log("start()");
+      
         }
 
         /**
@@ -74,7 +74,6 @@ module objects {
          */
         public update():void {
             this.x -= this._dx;
-            console.log(this.x + ":" +this._dx);
             
             this._checkBounds();
         }

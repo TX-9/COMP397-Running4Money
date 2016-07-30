@@ -48,7 +48,7 @@ namespace core {
         { id: "exitButton", src: "../../Assets/images/exitButton.png" },
         { id: "ground", src: "../../Assets/images/ground.gif" },
         { id: "gold", src: "../../Assets/images/gold.png" },
-        { id: "plane", src: "../../Assets/images/plane.png" },
+        { id: "player", src: "../../Assets/images/player.png" },
         { id: "dung", src: "../../Assets/images/dung.png" },
         { id: "thunder", src: "../../Assets/audio/thunder.ogg" },
         { id: "yay", src: "../../Assets/audio/yay.ogg" },

@@ -37,13 +37,21 @@ var objects;
         Player.prototype._checkBounds = function () {
             // checkbounds to stop player from going outside
             // check right bounds
-            if (this.x >= (640 - (this.width * 0.5))) {
-                this.x = (640 - (this.width * 0.5));
+            if (this.x >= (240 - (this.width * 0.5))) {
+                this.x = (240 - (this.width * 0.5));
             }
             // check left bounds
             if (this.x <= (0 + (this.width * 0.5))) {
                 this.x = (0 + (this.width * 0.5));
             }
+            // check tob bounds
+            if (this.y <= (375 - (this.height * 0.5))) {
+                this.y = (575 - (this.height * 0.5));
+            }
+            // check bottm bounds
+            // if(this.y >= 575) {
+            //     this.y = 575;
+            // }
         };
         // PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++++++++
         /**
@@ -55,7 +63,7 @@ var objects;
          * @returns {void}
          */
         Player.prototype.start = function () {
-            this.y = 430;
+            this.y = 775;
         };
         /**
          * This method updates the object's properties
@@ -69,6 +77,7 @@ var objects;
             // player to follow mouse
             this.position = new objects.Vector2(this.x, this.y);
             this.x = core.stage.mouseX;
+            this.y = core.stage.mouseY;
             this._checkBounds();
         };
         return Player;

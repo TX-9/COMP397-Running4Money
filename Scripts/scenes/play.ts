@@ -2,9 +2,9 @@ module scenes {
     export class Play extends objects.Scene {
         //  PRIVATE INSTANCE VARIABLES
         private _ground: objects.Ground;
-        private _gold: objects.Gold;
+        private _gold: objects.Gold[];
         private _player: objects.Player;
-        private _clouds: objects.Dung[];
+        private _dung: objects.Dung[];
         private _collision: managers.Collision;
         private _scoreLabel: objects.Label;
         private _livesLabel: objects.Label;
@@ -31,21 +31,25 @@ module scenes {
             this._ground = new objects.Ground("ground");
             this.addChild(this._ground);
 
-            // gold object
-            this._gold = new objects.Gold("gold");
-            this.addChild(this._gold);
+            
+            // gold array
+            this._gold = new Array<objects.Gold>();
+            for (let count = 0; count < 2; count++) {
+                this._gold.push(new objects.Gold("gold"));
+                this.addChild(this._gold[count]);
+            }
 
             // player object
-            this._player = new objects.Player("plane");
+            this._player = new objects.Player("player");
             this.addChild(this._player);
             this._engineSound = createjs.Sound.play("engine");
             this._engineSound.loop = -1;
 
             // dung array
-            this._clouds = new Array<objects.Dung>();
+            this._dung = new Array<objects.Dung>();
             for (let count = 0; count < 3; count++) {
-                this._clouds.push(new objects.Dung("dung"));
-                this.addChild(this._clouds[count]);
+                this._dung.push(new objects.Dung("dung"));
+                this.addChild(this._dung[count]);
             }
 
             // include a collision managers
@@ -64,13 +68,18 @@ module scenes {
 
         public Update(): void {
             this._ground.update();
-            this._gold.update();
+           
             this._player.update();
-            this._collision.check(this._player, this._gold);
-
+            
 
             // update each dung
-            this._clouds.forEach(dung => {
+            this._gold.forEach(gold => {
+                 gold.update();
+                this._collision.check(this._player, gold);
+            });
+
+            // update each dung
+            this._dung.forEach(dung => {
                 dung.update();
                 this._collision.check(this._player, dung);
             });

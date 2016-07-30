@@ -8,7 +8,8 @@ module objects {
      */
     export class Gold extends objects.GameObject {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
-        private _dy:number;
+        private _dy: number;
+        private _dx: number;
 
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
@@ -32,11 +33,12 @@ module objects {
          * @method _reset
          * @returns {void}
          */
-        private _reset():void {
-            this.y = -this.height;
+        private _reset(): void {
+            this._dx = Math.floor((Math.random() * 3) + 5); // horizontal drift
+            console.log("dx:" + this._dx);
 
-            // get a random x location
-            this.x = Math.floor((Math.random() * (640 - (this.width * 0.5))) + (this.width * 0.5));
+            this.y = 575;
+            this.x = 890;
         }
 
         /**
@@ -46,12 +48,12 @@ module objects {
          * @method _checkBounds
          * @returns {void}
          */
-        private _checkBounds():void {
-            if(this.y >= (480 + (this.height * 0.5))) {
+        private _checkBounds(): void {
+            if (this.x <= (0 + (this.width * 0.5))) {
                 this._reset();
             }
         }
-        
+
         // PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++++++++
 
         /**
@@ -62,9 +64,9 @@ module objects {
          * @method start
          * @returns {void}
          */
-        public start():void {
+        public start(): void {
             this._reset();
-            this._dy = 5; // 5px per frame down
+          
         }
 
         /**
@@ -75,9 +77,9 @@ module objects {
          * @method update
          * @returns {void}
          */
-        public update():void {
-             this.position = new Vector2(this.x, this.y);
-            this.y += this._dy;
+        public update(): void {
+            // this.position = new Vector2(this.x, this.y);
+            this.x -= this._dx;
             this._checkBounds();
         }
     }

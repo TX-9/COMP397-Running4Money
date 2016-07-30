@@ -35,9 +35,10 @@ var objects;
          * @returns {void}
          */
         Gold.prototype._reset = function () {
-            this.y = -this.height;
-            // get a random x location
-            this.x = Math.floor((Math.random() * (640 - (this.width * 0.5))) + (this.width * 0.5));
+            this._dx = Math.floor((Math.random() * 3) + 5); // horizontal drift
+            console.log("dx:" + this._dx);
+            this.y = 575;
+            this.x = 890;
         };
         /**
          * This method checks if the object has reached its boundaries
@@ -47,7 +48,7 @@ var objects;
          * @returns {void}
          */
         Gold.prototype._checkBounds = function () {
-            if (this.y >= (480 + (this.height * 0.5))) {
+            if (this.x <= (0 + (this.width * 0.5))) {
                 this._reset();
             }
         };
@@ -62,7 +63,6 @@ var objects;
          */
         Gold.prototype.start = function () {
             this._reset();
-            this._dy = 5; // 5px per frame down
         };
         /**
          * This method updates the object's properties
@@ -73,8 +73,8 @@ var objects;
          * @returns {void}
          */
         Gold.prototype.update = function () {
-            this.position = new objects.Vector2(this.x, this.y);
-            this.y += this._dy;
+            // this.position = new Vector2(this.x, this.y);
+            this.x -= this._dx;
             this._checkBounds();
         };
         return Gold;

@@ -25,19 +25,22 @@ var scenes;
             // ground object
             this._ground = new objects.Ground("ground");
             this.addChild(this._ground);
-            // gold object
-            this._gold = new objects.Gold("gold");
-            this.addChild(this._gold);
+            // gold array
+            this._gold = new Array();
+            for (var count = 0; count < 2; count++) {
+                this._gold.push(new objects.Gold("gold"));
+                this.addChild(this._gold[count]);
+            }
             // player object
-            this._player = new objects.Player("plane");
+            this._player = new objects.Player("player");
             this.addChild(this._player);
             this._engineSound = createjs.Sound.play("engine");
             this._engineSound.loop = -1;
             // dung array
-            this._clouds = new Array();
+            this._dung = new Array();
             for (var count = 0; count < 3; count++) {
-                this._clouds.push(new objects.Dung("dung"));
-                this.addChild(this._clouds[count]);
+                this._dung.push(new objects.Dung("dung"));
+                this.addChild(this._dung[count]);
             }
             // include a collision managers
             this._collision = new managers.Collision();
@@ -52,11 +55,14 @@ var scenes;
         Play.prototype.Update = function () {
             var _this = this;
             this._ground.update();
-            this._gold.update();
             this._player.update();
-            this._collision.check(this._player, this._gold);
             // update each dung
-            this._clouds.forEach(function (dung) {
+            this._gold.forEach(function (gold) {
+                gold.update();
+                _this._collision.check(_this._player, gold);
+            });
+            // update each dung
+            this._dung.forEach(function (dung) {
                 dung.update();
                 _this._collision.check(_this._player, dung);
             });
