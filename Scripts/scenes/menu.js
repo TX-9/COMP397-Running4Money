@@ -25,10 +25,15 @@ var scenes;
             this._menuLabel = new objects.Label("Running4Money", "60px", "Consolas", "#FDFDFD", 445, 280, true);
             this.addChild(this._menuLabel);
             // add the start button
-            this._startButton = new objects.Button("startButton", 445, 515, true);
+            this._startButton = new objects.Button("startButton", 400, 515, true);
             this.addChild(this._startButton);
             // Start button event listener
             this._startButton.on("click", this._startButtonClick, this);
+            // add the rule button
+            this._ruleButton = new objects.Button("ruleButton", 595, 515, true);
+            this.addChild(this._ruleButton);
+            // Start button event listener
+            this._ruleButton.on("click", this._ruleButtonClick, this);
             // add this scene to the global scene container
             core.stage.addChild(this);
         };
@@ -39,6 +44,12 @@ var scenes;
         Menu.prototype._startButtonClick = function (event) {
             // Switch the scene
             core.scene = config.Scene.PLAY;
+            core.changeScene();
+        };
+        // EVENT HANDLERS ++++++++++++++++
+        Menu.prototype._ruleButtonClick = function (event) {
+            // Switch the scene
+            core.scene = config.Scene.RULE;
             core.changeScene();
         };
         return Menu;

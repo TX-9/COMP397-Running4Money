@@ -22,9 +22,11 @@ var core;
     var menu;
     var over;
     var play;
+    var rule;
     // asset manifest for images and sounds
     var assetData = [
-        { id: "nextButton", src: "../../Assets/images/nextButton.png" },
+        { id: "ruleButton", src: "../../Assets/images/ruleButton.png" },
+        { id: "rules", src: "../../Assets/images/instruction.png" },
         { id: "startButton", src: "../../Assets/images/startButton.png" },
         { id: "restartButton", src: "../../Assets/images/restartButton.png" },
         { id: "ground", src: "../../Assets/images/ground.gif" },
@@ -89,6 +91,12 @@ var core;
                 core.stage.removeAllChildren();
                 menu = new scenes.Menu();
                 currentScene = menu;
+                break;
+            // Show the RULE Scene
+            case config.Scene.RULE:
+                core.stage.removeAllChildren();
+                rule = new scenes.Rule();
+                currentScene = rule;
                 break;
             // Show the PLAY Scene
             case config.Scene.PLAY:
