@@ -14,7 +14,6 @@ var objects;
      */
     var Player = (function (_super) {
         __extends(Player, _super);
-        // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
         // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
@@ -37,8 +36,8 @@ var objects;
         Player.prototype._checkBounds = function () {
             // checkbounds to stop player from going outside
             // check right bounds
-            if (this.x >= (240 - (this.width * 0.5))) {
-                this.x = (240 - (this.width * 0.5));
+            if (this.x >= (340 - (this.width * 0.5))) {
+                this.x = (340 - (this.width * 0.5));
             }
             // check left bounds
             if (this.x <= (0 + (this.width * 0.5))) {
@@ -46,12 +45,12 @@ var objects;
             }
             // check tob bounds
             if (this.y <= (375 - (this.height * 0.5))) {
-                this.y = (575 - (this.height * 0.5));
+                this.y = (605 - (this.height * 0.5));
             }
             // check bottm bounds
-            // if(this.y >= 575) {
-            //     this.y = 575;
-            // }
+            if (this.y >= (605 - (this.height * 0.5))) {
+                this.y = (605 - (this.height * 0.5));
+            }
         };
         // PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++++++++
         /**
@@ -63,7 +62,8 @@ var objects;
          * @returns {void}
          */
         Player.prototype.start = function () {
-            this.y = 775;
+            this.x = 50;
+            this.y = 575;
         };
         /**
          * This method updates the object's properties
@@ -76,10 +76,14 @@ var objects;
         Player.prototype.update = function () {
             // player to follow mouse
             this.position = new objects.Vector2(this.x, this.y);
-            this.x = core.stage.mouseX;
-            this.y = core.stage.mouseY;
+            if (objects.Player.isActivate) {
+                this.y = core.stage.mouseY;
+                this.x = core.stage.mouseX;
+            }
             this._checkBounds();
         };
+        // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
+        Player.isActivate = false;
         return Player;
     }(objects.GameObject));
     objects.Player = Player;

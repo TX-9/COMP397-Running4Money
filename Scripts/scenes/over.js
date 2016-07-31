@@ -22,13 +22,13 @@ var scenes;
             this._ground = new objects.Ground("ground");
             this.addChild(this._ground);
             // Add Menu Label
-            this._gameOverLabel = new objects.Label("GAME OVER", "60px", "Consolas", "#FFFF00", 320, 180, true);
+            this._gameOverLabel = new objects.Label("GAME OVER", "60px", "Consolas", "#FDFDFD", 445, 280, true);
             this.addChild(this._gameOverLabel);
             // Add Score Label
-            this._finalScoreLabel = new objects.Label("SCORE: " + core.score, "60px", "Consolas", "#FFFF00", 320, 240, true);
+            this._finalScoreLabel = new objects.Label("SCORE: " + core.score, "60px", "Consolas", "#1AFBF4", 445, 350, true);
             this.addChild(this._finalScoreLabel);
             // add the start button
-            this._restartButton = new objects.Button("restartButton", 320, 420, true);
+            this._restartButton = new objects.Button("restartButton", 445, 515, true);
             this.addChild(this._restartButton);
             // Start button event listener
             this._restartButton.on("click", this._restartButtonClick, this);
@@ -37,7 +37,6 @@ var scenes;
         };
         Over.prototype.Update = function () {
             // scene updates happen here...
-            this._ground.update();
         };
         // EVENT HANDLERS ++++++++++++++++
         Over.prototype._restartButtonClick = function (event) {

@@ -78,7 +78,7 @@ module objects {
          * @returns {void}
          */
         public update(): void {
-            // this.position = new Vector2(this.x, this.y);
+            this.position = new Vector2(this.x, this.y);
             this.x -= this._dx;
             this._checkBounds();
         }

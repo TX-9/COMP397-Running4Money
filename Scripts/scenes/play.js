@@ -45,9 +45,9 @@ var scenes;
             // include a collision managers
             this._collision = new managers.Collision();
             // add lives and score label
-            this._livesLabel = new objects.Label("Lives: " + core.lives, "40px", "Consolas", "#FFFF00", 10, 5, false);
+            this._livesLabel = new objects.Label("Lives: " + core.lives, "40px", "Consolas", "#FB791A", 230, 5, false);
             this.addChild(this._livesLabel);
-            this._scoreLabel = new objects.Label("Score: " + core.score, "40px", "Consolas", "#FFFF00", 350, 5, false);
+            this._scoreLabel = new objects.Label("Score: " + core.score, "40px", "Consolas", "#1AFBF4", 500, 5, false);
             this.addChild(this._scoreLabel);
             // add this scene to the global scene container
             core.stage.addChild(this);

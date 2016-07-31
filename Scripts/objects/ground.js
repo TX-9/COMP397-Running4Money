@@ -72,6 +72,9 @@ var objects;
         Ground.prototype.update = function () {
             this.x -= this._dx;
             this._checkBounds();
+            if (this.x < -200) {
+                objects.Player.isActivate = true;
+            }
         };
         return Ground;
     }(createjs.Bitmap));

@@ -7,8 +7,8 @@ module objects {
      * @extends {objects.GameObject}
      */
     export class Player extends objects.GameObject {
-         // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
-
+        // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
+        static isActivate: boolean = false;
         // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
 
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
@@ -18,40 +18,40 @@ module objects {
          * @constructor
          * @param {string} imageString
          */
-        constructor(imageString:string) {
+        constructor(imageString: string) {
             super(imageString)
 
             this.start();
         }
 
-         /**
-         * This method checks if the object has reached its boundaries
-         * 
-         * @private
-         * @method _checkBounds
-         * @returns {void}
-         */
-        private _checkBounds():void {
+        /**
+        * This method checks if the object has reached its boundaries
+        * 
+        * @private
+        * @method _checkBounds
+        * @returns {void}
+        */
+        private _checkBounds(): void {
             // checkbounds to stop player from going outside
 
             // check right bounds
-            if(this.x >= (240 - (this.width * 0.5))) {
-                this.x = (240 - (this.width * 0.5));
+            if (this.x >= (340 - (this.width * 0.5))) {
+                this.x = (340 - (this.width * 0.5));
             }
 
             // check left bounds
-            if(this.x <= (0 + (this.width * 0.5))) {
+            if (this.x <= (0 + (this.width * 0.5))) {
                 this.x = (0 + (this.width * 0.5));
             }
 
-             // check tob bounds
-            if(this.y <= (375 - (this.height * 0.5))) {
-                this.y = (575 - (this.height * 0.5));
+            // check tob bounds
+            if (this.y <= (375 - (this.height * 0.5))) {
+                this.y = (605 - (this.height * 0.5));
             }
 
             // check bottm bounds
-            if(this.y >= 575) {
-                this.y = 575;
+            if (this.y >= (605 - (this.height * 0.5))) {
+                this.y = (605 - (this.height * 0.5));
             }
         }
 
@@ -65,7 +65,8 @@ module objects {
          * @method start
          * @returns {void}
          */
-        public start():void {
+        public start(): void {
+            this.x = 50;
             this.y = 575;
         }
 
@@ -77,11 +78,15 @@ module objects {
          * @method update
          * @returns {void}
          */
-        public update():void {
+        public update(): void {
             // player to follow mouse
             this.position = new Vector2(this.x, this.y);
-            this.x = core.stage.mouseX;
-            this.y = core.stage.mouseY;
+
+            if (objects.Player.isActivate) {
+                this.y = core.stage.mouseY;
+                this.x = core.stage.mouseX;
+            }
+
             this._checkBounds();
         }
     }

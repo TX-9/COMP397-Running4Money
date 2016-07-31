@@ -79,7 +79,7 @@ var objects;
          * @returns {void}
          */
         Dung.prototype.update = function () {
-            // this.position = new Vector2(this.x, this.y);
+            this.position = new objects.Vector2(this.x, this.y);
             // this.y += this._dy;
             this.x -= this._dx;
             this._checkBounds();

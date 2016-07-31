@@ -15,12 +15,12 @@ var managers;
                     other.isColliding = true;
                     // if player collides with dung
                     if (other.name === "dung") {
-                        createjs.Sound.play("thunder");
+                        createjs.Sound.play("dung_sound");
                         core.lives -= 1;
                     }
                     // if player collides with gold
                     if (other.name === "gold") {
-                        createjs.Sound.play("yay");
+                        createjs.Sound.play("gold_sound");
                         core.score += 100;
                     }
                 }

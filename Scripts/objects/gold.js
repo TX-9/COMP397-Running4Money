@@ -73,7 +73,7 @@ var objects;
          * @returns {void}
          */
         Gold.prototype.update = function () {
-            // this.position = new Vector2(this.x, this.y);
+            this.position = new objects.Vector2(this.x, this.y);
             this.x -= this._dx;
             this._checkBounds();
         };

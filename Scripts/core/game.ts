@@ -42,17 +42,15 @@ namespace core {
 
     // asset manifest for images and sounds
     let assetData: objects.Asset[] = [
+       { id: "nextButton", src: "../../Assets/images/nextButton.png" },
         { id: "startButton", src: "../../Assets/images/startButton.png" },
         { id: "restartButton", src: "../../Assets/images/restartButton.png" },
-        { id: "nextButton", src: "../../Assets/images/nextButton.png" },
-        { id: "exitButton", src: "../../Assets/images/exitButton.png" },
         { id: "ground", src: "../../Assets/images/ground.gif" },
         { id: "gold", src: "../../Assets/images/gold.png" },
         { id: "player", src: "../../Assets/images/player.png" },
         { id: "dung", src: "../../Assets/images/dung.png" },
-        { id: "thunder", src: "../../Assets/audio/thunder.ogg" },
-        { id: "yay", src: "../../Assets/audio/yay.ogg" },
-        { id: "engine", src: "../../Assets/audio/engine.ogg" }
+        { id: "dung_sound", src: "../../Assets/audio/dung_sound.wav" },
+        { id: "gold_sound", src: "../../Assets/audio/gold_sound.wav" }
     ];
 
     /**

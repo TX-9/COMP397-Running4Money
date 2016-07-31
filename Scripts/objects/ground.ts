@@ -76,6 +76,11 @@ module objects {
             this.x -= this._dx;
             
             this._checkBounds();
+           
+            if (this.x < -200) {
+               objects.Player.isActivate = true;
+
+            }
         }
     }
 }
