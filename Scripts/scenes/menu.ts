@@ -37,11 +37,11 @@ module scenes {
             this._startButton.on("click", this._startButtonClick, this);
 
              // add the rule button
-            // this._ruleButton = new objects.Button("ruleButton", 545, 515, true)
-            // this.addChild(this._ruleButton);
+            this._ruleButton = new objects.Button("ruleButton", 545, 515, true)
+            this.addChild(this._ruleButton);
 
             // // Start button event listener
-            // this._ruleButton.on("click", this._ruleButtonClick, this);
+            this._ruleButton.on("click", this._ruleButtonClick, this);
 
             // add this scene to the global scene container
             core.stage.addChild(this);

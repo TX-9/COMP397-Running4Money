@@ -23,8 +23,8 @@ var scenes;
             this._ground = new objects.Ground("ground");
             this.addChild(this._ground);
             // Add instruction image
-            // var ruleImg = new createjs.Bitmap(core.assets.getResult("rules"));
-            // this.addChild(ruleImg);
+            var ruleImg = new createjs.Bitmap(core.assets.getResult("rules"));
+            this.addChild(ruleImg);
             // add the start button
             this._startButton = new objects.Button("startButton", 445, 515, true);
             this.addChild(this._startButton);

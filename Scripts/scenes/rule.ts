@@ -24,8 +24,8 @@ module scenes {
             this.addChild(this._ground);
 
             // Add instruction image
-            // var ruleImg = new createjs.Bitmap(core.assets.getResult("rules"));
-            // this.addChild(ruleImg);
+            var ruleImg = new createjs.Bitmap(core.assets.getResult("rules"));
+            this.addChild(ruleImg);
             
 
             // add the start button
